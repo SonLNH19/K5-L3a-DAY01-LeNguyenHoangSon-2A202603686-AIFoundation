@@ -1,0 +1,110 @@
+{
+ "seed": 9973,
+ "predictions": {
+  "ml_f1": {
+   "text": "F1~0.6, precision thấp hơn recall vì tỉ lệ nhầm khá thấp",
+   "time": "15:04:53"
+  },
+  "ml_lr": {
+   "text": "lr=0.001 thì đường loss giảm rất chậm, lr=50 thid đường loss giảm rất nhanh",
+   "time": "15:05:02"
+  },
+  "dl_curve": {
+   "text": "(1) val loss sẽ không giảm mãi, khi huấn luyện lâu mô hình bị over fitting thì val loss sẽ quá thấp và tăng trở lại , (2) mlp sẽ tương đương ở phần 1",
+   "time": "15:05:15"
+  },
+  "llm_models": {
+   "text": "chọn hai mô hình Gemini 2.5 Flash-Lite và Gemini 2.5 Flash. dự đoán Gemini 2.5 Flash có F1-score cao hơn khoảng 1–3 điểm do khả năng xử lý ngôn ngữ tốt hơn, nhưng chi phí có thể đắt hon bản lite. LLM chưa chắc vượt được mô hình Embedding ở phần 3b vì mô hình này đã được huấn luyện trên dữ liệu chuyên biệt, phù hợp với bài toán phân loại tin nhắn spam",
+   "time": "15:08:21"
+  },
+  "llm_fewshot": {
+   "text": "F1 có thể tăng vì mô hình có thêm ví dụ để phân loại chính xác hơn. Tuy nhiên, chi phí sẽ tăng do mỗi prompt dài hơn và tốn nhiều token input hơn",
+   "time": "15:12:59"
+  },
+  "tradeoff": {
+   "text": "Batching, Quantization nằm trên đường Pareto . LLM trực tiếp nằm bên phải vạch 50ms",
+   "time": "15:16:57"
+  },
+  "hard_eval": {
+   "text": "(1)accuracy của BoW + LogReg khoảng 70–80%, BoW + MLP khoảng 75–85%, Encoder + kNN khoảng 60–75%, Encoder + MLP và Encoder + LogReg khoảng 75–85%, còn LLM zero-shot khoảng 80–90%. (2) Nhóm khó nhất với BoW có thể là ham_looks_spam.Nhóm khó nhất với LLM có thể là prompt_injection ",
+   "time": "15:17:09"
+  }
+ },
+ "checks": {
+  "1.1 vectorize": true,
+  "1.2 sigmoid / predict_proba": true,
+  "1.3 train_logreg": true,
+  "1.4 metrics": true,
+  "2.1 build_mlp": true,
+  "2.2 train_mlp": true,
+  "3.1–3.2 cosine / top_k_similar": true,
+  "4.2–4.3 prompt / parse_label": true,
+  "4.1 + 4.4 call_openai / llm_classify_batch": true,
+  "tính tay: baseline_accuracy": true,
+  "tính tay: sigmoid_0": true,
+  "tính tay: f1_example": true,
+  "tính tay: cosine_example": true,
+  "tính tay: llm_cost_per_day": true
+ },
+ "experiments": [
+  {
+   "key": "ml_f1",
+   "time": "15:04:54"
+  },
+  {
+   "key": "ml_lr",
+   "time": "15:05:03"
+  },
+  {
+   "key": "dl_curve",
+   "time": "15:05:16"
+  },
+  {
+   "key": "llm_models",
+   "time": "15:08:22"
+  },
+  {
+   "key": "llm_fewshot",
+   "time": "15:13:01"
+  },
+  {
+   "key": "tradeoff",
+   "time": "15:16:58"
+  },
+  {
+   "key": "hard_eval",
+   "time": "15:17:10"
+  },
+  {
+   "key": "hard_eval",
+   "time": "15:17:25"
+  }
+ ],
+ "challenge": 1,
+ "results": {
+  "1. BoW + LogReg (tự code)": {
+   "accuracy": 0.9806451612903225,
+   "precision": 1.0,
+   "recall": 0.8369565217391305,
+   "f1": 0.911242603550296,
+   "f1_SUB": 0.9473684210526316,
+   "train_s": 4.280614512000284,
+   "msg_per_s": 13017.98717965897,
+   "p50_ms": 0.06364599948938121,
+   "p95_ms": 0.4127713501020351,
+   "usd_per_1k": 0.0
+  },
+  "2. BoW + MLP (deep learning)": {
+   "accuracy": 0.9858064516129033,
+   "precision": 0.9550561797752809,
+   "recall": 0.9239130434782609,
+   "f1": 0.9392265193370166,
+   "f1_SUB": 1.0,
+   "train_s": 6.253131112999654,
+   "msg_per_s": 16854.00234609583,
+   "p50_ms": 0.2615200000946061,
+   "p95_ms": 0.3484999499050896,
+   "usd_per_1k": 0.0
+  }
+ }
+}
