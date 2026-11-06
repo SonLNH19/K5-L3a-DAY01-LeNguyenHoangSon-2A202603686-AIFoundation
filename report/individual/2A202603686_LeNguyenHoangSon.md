@@ -9,8 +9,8 @@
 | Tệp | Có? | Ghi chú |
 | --- | --- | --- |
 | [`day01_lab.ipynb`](day01_lab.ipynb) — notebook đã chạy, còn output | ☑ | Đã cung cấp notebook `day01_lab(2).ipynb`, có output; cần đổi tên thành `day01_lab.ipynb` trước khi nộp. Một số ô chưa chạy thành công. |
-| [`lab1_report.json`](lab1_report.json) — do ô "Báo cáo cuối" sinh ra | ☐ | Notebook in thông báo đã tạo tệp, nhưng chưa có tệp JSON đính kèm để xác nhận/nộp. |
-| [`hand_calc.jpg`](hand_calc.jpg) — ảnh tính tay có các bước | ☐ | Chưa cung cấp ảnh viết tay. Các giá trị tính tay trong notebook đã qua kiểm tra 5/5, nhưng không thay thế ảnh. |
+| [`lab1_report.json`](lab1_report.json) — do ô "Báo cáo cuối" sinh ra | ☑ | Đã có tệp theo xác nhận của sinh viên; cần nộp kèm báo cáo. |
+| [`hand_calc.jpg`](hand_calc.jpg) — ảnh tính tay có các bước | ☑ | Đã có ảnh theo xác nhận của sinh viên; cần nộp kèm báo cáo. |
 
 **Trạng thái notebook:** SEED = 9973; thử thách #2; 14/14 bộ kiểm tra đạt. Ô báo cáo cuối ghi thiếu 3 dự đoán trong log (`dl_relu`, `emb_search`, `emb_tricky`). Các kết quả Embedding chưa được lưu vào bảng tổng hợp; các phép gọi API LLM bị giới hạn tốc độ.
 
@@ -74,7 +74,8 @@ Lượng tin trung bình cần xử lý xấp xỉ **10,000,000 / 86,400 = 115.7
 | Phần | Đã hỏi AI gì | AI trả lời / hỗ trợ gì | Đã sửa / kiểm chứng gì |
 | --- | --- | --- | --- |
 | Hoàn thiện báo cáo Day 01 | Nhờ hỗ trợ lập báo cáo từ notebook và mẫu gồm 7 mục. | Tổng hợp SEED, bảng đo, các dự đoán, thử thách cá nhân và phân tích các hạn chế của kết quả. | Đối chiếu với output notebook: SEED 9973, 14/14 checks, F1 và p95 của 2 mô hình, kết quả vocab 100/5000; đánh dấu phần stress test/LLM chưa có số liệu. |
-| Các lần sử dụng AI khác (nếu có) | **Cần bổ sung đúng prompt đã sử dụng.** | **Cần bổ sung nội dung phản hồi AI thực tế.** | **Cần nêu điều tự chỉnh sửa/kiểm chứng.** |
+| Hỗ trợ xử lý lỗi Phần 4 | Hỏi AI cách khắc phục lỗi chạy quá thời gian (time limit/timeout) khi thực hiện các bước ở Phần 4. | AI gợi ý kiểm tra đoạn code gây chậm, giới hạn số lần gọi API, điều chỉnh thời gian chờ và xử lý lỗi để chương trình không bị dừng đột ngột. | Em xem lại các ô chạy lâu và thông báo lỗi trong notebook, đối chiếu gợi ý với code của mình. Phần gọi API/stress test vẫn chưa có đủ kết quả để khẳng định lỗi đã được xử lý hoàn toàn. |
+| Tìm hiểu các hàm chưa biết | Hỏi AI ý nghĩa, tham số, giá trị trả về và cách sử dụng những hàm Python/ML chưa quen khi đọc hoặc viết notebook. | AI gợi ý cách dùng hàm, giải thích chức năng và đưa ví dụ giúp em hiểu luồng xử lý dữ liệu, huấn luyện và đánh giá mô hình. | Em đọc lại code, thử áp dụng gợi ý vào các ô liên quan và đối chiếu với output notebook thay vì sao chép nguyên câu trả lời. |
 
 **Điều em học được:** Trước buổi học, em nghĩ mô hình càng phức tạp thì độ chính xác càng cao, nhưng qua thực nghiệm em thấy BoW + MLP đã đạt F1 tốt cùng độ trễ rất thấp, còn LLM chưa thể đánh giá đầy đủ khi API bị giới hạn. Em cũng hiểu rằng accuracy không đủ phản ánh chất lượng khi dữ liệu mất cân bằng: phải xem precision, recall, F1 và đọc các mẫu dự đoán sai. Cuối cùng, việc thay đổi kích thước vocab cho thấy cách biểu diễn dữ liệu ảnh hưởng rõ rệt đến khả năng phát hiện spam, chứ không chỉ thuật toán huấn luyện.
 
